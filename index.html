@@ -17,16 +17,15 @@
 
     <div class="logo">
         A-ONE CREDIT
-        <span>에이원 크레딧</span>
+        <small>에이원 크레딧</small>
     </div>
 
 
     <nav>
-        <a>대출상품 안내</a>
-        <a>대출 안내</a>
-        <a>상담 신청</a>
-        <a>고객센터</a>
-        <a>회사소개</a>
+        <a href="#">대출상품 안내</a>
+        <a href="#">대출 안내</a>
+        <a href="#apply">상담 신청</a>
+        <a href="#company">회사소개</a>
     </nav>
 
 </header>
@@ -36,10 +35,9 @@
 
 <section class="hero">
 
+    <div class="hero-left">
 
-    <div class="hero-text">
-
-        <p class="sub">
+        <p class="gold">
             당신의 든든한 금융 파트너 ♡
         </p>
 
@@ -55,64 +53,19 @@
         </p>
 
 
-        <button>
+        <a href="#apply" class="main-btn">
             ✈ 대출 상담 신청하기
-        </button>
-
-
-    </div>
-
-
-
-    <div class="hero-photo">
-
-        <img src="images/hero.jpg">
+        </a>
 
     </div>
 
 
-</section>
 
+    <div class="hero-right">
 
+        <img src="images/hero.jpg" alt="상담 이미지">
 
-
-
-<section class="quick-card">
-
-
-<div>
-<strong>01</strong>
-<h3>집에서 간편하게</h3>
-<p>PC로 쉽고 빠르게 신청</p>
-</div>
-
-
-<div>
-<strong>02</strong>
-<h3>모바일로 간편 신청</h3>
-<p>스마트폰으로 언제 어디서나</p>
-</div>
-
-
-<div>
-<strong>03</strong>
-<h3>현장에서도 OK</h3>
-<p>업무 중에도 빠르게 신청</p>
-</div>
-
-
-<div>
-<strong>04</strong>
-<h3>이동 중에도 가능</h3>
-<p>이동시간에도 간편 신청</p>
-</div>
-
-
-<div>
-<strong>05</strong>
-<h3>24시간 신청 가능</h3>
-<p>시간 제약 없이 언제든 OK</p>
-</div>
+    </div>
 
 
 </section>
@@ -121,35 +74,51 @@
 
 
 
+<section class="quick-section">
 
-<section class="service">
 
+<div class="quick-card">
 
-<div>
-<span>⚡</span>
-<h3>신속한 상담</h3>
-<p>빠른 답변과 친절한 상담</p>
+    <b>01</b>
+    <h3>집에서 간편하게</h3>
+    <p>PC로 쉽고 빠르게 신청</p>
+
 </div>
 
 
-<div>
-<span>🛡</span>
-<h3>정확한 심사</h3>
-<p>고객 맞춤형 최적 솔루션</p>
+<div class="quick-card">
+
+    <b>02</b>
+    <h3>모바일로 간편 신청</h3>
+    <p>스마트폰으로 언제 어디서나</p>
+
 </div>
 
 
-<div>
-<span>%</span>
-<h3>최저 금리 비교</h3>
-<p>다양한 금융상품 안내</p>
+<div class="quick-card">
+
+    <b>03</b>
+    <h3>현장에서도 OK</h3>
+    <p>업무 중에도 빠르게 신청</p>
+
 </div>
 
 
-<div>
-<span>🎧</span>
-<h3>전문 상담 지원</h3>
-<p>1:1 맞춤 상담 지원</p>
+<div class="quick-card">
+
+    <b>04</b>
+    <h3>이동 중에도 가능</h3>
+    <p>이동시간에도 간편 신청</p>
+
+</div>
+
+
+<div class="quick-card">
+
+    <b>05</b>
+    <h3>24시간 신청 가능</h3>
+    <p>시간 제약 없이 신청</p>
+
 </div>
 
 
@@ -160,7 +129,47 @@
 
 
 
-<section class="apply">
+
+<section class="service-section">
+
+
+<div>
+    <span>⚡</span>
+    <h3>신속한 상담</h3>
+    <p>빠른 답변과 친절한 상담</p>
+</div>
+
+
+<div>
+    <span>🛡</span>
+    <h3>정확한 심사</h3>
+    <p>고객 맞춤형 상담</p>
+</div>
+
+
+<div>
+    <span>%</span>
+    <h3>최저 금리 비교</h3>
+    <p>다양한 금융상품 안내</p>
+</div>
+
+
+<div>
+    <span>🎧</span>
+    <h3>전문 상담 지원</h3>
+    <p>1:1 맞춤 상담</p>
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section id="apply" class="apply-section">
 
 
 <h2>
@@ -169,7 +178,7 @@
 
 
 <p>
-전문 상담원이 빠르게 확인 후 연락드립니다.
+아래 정보를 남겨주시면 전문 상담원이 빠르게 연락드립니다.
 </p>
 
 
@@ -177,19 +186,23 @@
 <form>
 
 
-<div class="input-box">
-
-<input placeholder="이름">
-
-<input placeholder="휴대폰 번호">
+<div class="form-grid">
 
 
-<input placeholder="생년월일">
-
-<input placeholder="직업">
+<input type="text" placeholder="이름">
 
 
-<input placeholder="희망 금액">
+<input type="text" placeholder="휴대폰 번호">
+
+
+<input type="text" placeholder="생년월일">
+
+
+<input type="text" placeholder="직업">
+
+
+<input type="text" placeholder="희망 금액">
+
 
 <textarea placeholder="문의 내용"></textarea>
 
@@ -203,15 +216,12 @@
 </button>
 
 
-
 </form>
-
 
 
 <p class="privacy">
 🔒 입력하신 정보는 상담 목적으로만 사용됩니다.
 </p>
-
 
 
 </section>
@@ -221,7 +231,8 @@
 
 
 
-<section class="loan-info">
+
+<section class="loan-section">
 
 
 <h2>
@@ -236,14 +247,15 @@ A-one(에이원) 대출은 주로 (주)에이원대부캐피탈에서 취급하�
 
 
 
-<div class="info-grid">
+<div class="loan-grid">
 
 
 <div>
 <h3>신청 대상</h3>
 <p>
-만 20세 이상의 직장인,
-주부, 프리랜서 등
+만 20세 이상의 직장인<br>
+주부<br>
+프리랜서 등
 </p>
 </div>
 
@@ -251,7 +263,7 @@ A-one(에이원) 대출은 주로 (주)에이원대부캐피탈에서 취급하�
 <div>
 <h3>대출 금리</h3>
 <p>
-법정 최고 금리 이내
+법정 최고 금리 이내<br>
 (연 20% 이내)
 </p>
 </div>
@@ -286,7 +298,8 @@ A-one(에이원) 대출은 주로 (주)에이원대부캐피탈에서 취급하�
 
 
 
-<section class="company">
+
+<section id="company" class="company-section">
 
 
 <h2>
@@ -300,12 +313,22 @@ A-one(에이원) 대출은 주로 (주)에이원대부캐피탈에서 취급하�
 
 
 <p>
-금융감독원 등록 대부금융 업체로
-고객 상황에 맞는 상담을 제공합니다.
+등록번호 : 120-86-38783
+</p>
+
+
+<p>
+법인등록번호 : 110111-2546137
+</p>
+
+
+<p>
+고객 상황에 맞는 상담 서비스를 제공합니다.
 </p>
 
 
 </section>
+
 
 
 
