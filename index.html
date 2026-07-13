@@ -2,93 +2,75 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>A-ONE CREDIT</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#050607;color:#fff;font-family:"Noto Sans KR",Arial,sans-serif}
-:root{--gold:#d7aa4b;--line:#4b3614}
-.container{max-width:1180px;margin:auto;padding:0 25px}
-header{height:76px;background:#070707;border-bottom:1px solid #222}
-nav{height:100%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:26px;font-weight:900;color:var(--gold)}
-nav a{color:#ddd;text-decoration:none;margin-left:25px;font-size:14px}
-.btn{background:linear-gradient(90deg,#c89635,#f0c66b);color:#111;padding:15px 28px;border-radius:8px;font-weight:800;display:inline-block}
-.hero{padding:90px 0;background:linear-gradient(90deg,#050607 30%,rgba(5,6,7,.3)),url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1600") center/cover}
-.hero h1{font-size:64px;line-height:1.15;margin:20px 0}
-.gold{color:var(--gold)}
-.hero p{font-size:18px;color:#ccc}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-45px}
-.feature,.section{background:#0c0e11;border:1px solid var(--line);border-radius:18px}
-.feature{padding:30px;text-align:center}
-.section{padding:45px;margin:45px auto}
-.section h2{text-align:center;color:var(--gold);font-size:34px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-input,textarea{width:100%;background:#080909;border:1px solid #403016;color:#fff;padding:16px;border-radius:8px}
-button{width:100%;margin-top:20px;padding:20px;background:var(--gold);border:0;border-radius:10px;font-size:20px;font-weight:900}
-.info{line-height:2;color:#ddd}
-footer{text-align:center;padding:35px;color:var(--gold);border-top:1px solid #222}
-@media(max-width:800px){.features,.grid{grid-template-columns:1fr}.hero h1{font-size:40px}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><nav class="container"><div class="logo">A-ONE CREDIT</div><div><a href="#apply">대출상담 신청</a><a href="#company">회사소개</a></div></nav></header>
+<header class="header">
+<div class="logo">A-ONE CREDIT</div>
+<nav>대출상품 안내　　대출 안내　　상담 신청　　고객센터　　회사소개</nav>
+<div class="tel">상담문의<br><b>02-555-1234</b></div>
+</header>
 
 <section class="hero">
-<div class="container">
-<div class="gold">당신의 든든한 금융 파트너</div>
-<h1>빠르고 정확한<br><span class="gold">맞춤 대출 상담</span></h1>
-<p>고객님의 상황에 맞는 최적의 상담 방향을 안내해드립니다.</p>
-<br><a class="btn" href="#apply">대출 상담 신청하기</a>
+<div class="heroText">
+<p>당신의 든든한 금융 파트너 ♡</p>
+<h1>대출 <span>상담 신청</span></h1>
+<h3>언제 어디서나 간편하게 신청하세요!<br>전문 상담원이 신속하고 정확하게 도와드립니다.</h3>
+<button>✈ 대출 상담 신청하기</button>
 </div>
+<div class="heroImage"></div>
 </section>
 
-<div class="container">
-<div class="features">
-<div class="feature"><h3 class="gold">맞춤 상담</h3><p>개인 상황별 안내</p></div>
-<div class="feature"><h3 class="gold">간편 접수</h3><p>빠른 온라인 신청</p></div>
-<div class="feature"><h3 class="gold">안전 관리</h3><p>개인정보 보호</p></div>
-<div class="feature"><h3 class="gold">전문 상담</h3><p>상황에 맞는 안내</p></div>
-</div>
-
-<section id="company" class="section">
-<h2>A-ONE(에이원) 대출 안내</h2>
-<div class="info">
-A-one(에이원) 대출은 주로 (주)에이원대부캐피탈에서 취급하는 대부금융 상품을 의미합니다.<br><br>
-<b class="gold">신청 대상</b><br>
-만 20세 이상의 직장인, 주부, 프리랜서 등 소득 증빙이 가능한 고객<br><br>
-<b class="gold">대출 금리</b><br>
-법정 최고 금리 이내 (연 20% 이내)<br><br>
-<b class="gold">상환 방식</b><br>
-원리금균등상환, 자유상환, 만기일시상환 등<br><br>
-<b class="gold">주요 특징</b><br>
-중도상환수수료 및 취급수수료 없음
-</div>
+<section class="quick">
+<div>01<br><b>집에서 간편하게</b><br>PC로 쉽고 빠르게 신청</div>
+<div>02<br><b>모바일로 간편 신청</b><br>스마트폰으로 언제 어디서나</div>
+<div>03<br><b>현장에서도 OK</b><br>업무 중에도 빠르게 신청</div>
+<div>04<br><b>이동 중에도 가능</b><br>이동시간에도 간편하게 신청</div>
+<div>05<br><b>24시간 신청 가능</b><br>시간 제약 없이 언제든 OK</div>
 </section>
 
-<section id="apply" class="section">
+<section class="services">
+<div>⚡<b>신속한 상담</b><small>빠른 답변과 친절한 상담</small></div>
+<div>🛡<b>정확한 심사</b><small>고객 맞춤형 최적의 솔루션</small></div>
+<div>%<b>최저 금리 비교</b><small>다양한 금융사 제휴 안내</small></div>
+<div>🎧<b>전문 상담 지원</b><small>1:1 전문 상담원이 지원</small></div>
+</section>
+
+<section class="apply">
 <h2>대출 상담 신청</h2>
-<form id="form">
-<div class="grid">
-<input name="name" placeholder="이름">
-<input name="phone" placeholder="휴대폰번호">
-<input name="birth" placeholder="생년월일">
-<input name="job" placeholder="직업">
-<input name="amount" placeholder="희망 금액">
-<textarea name="message" placeholder="문의 내용"></textarea>
+<div class="form">
+<input placeholder="이름을 입력해주세요">
+<input placeholder="휴대폰 번호">
+<input placeholder="YYYY-MM-DD">
+<input placeholder="직업을 입력해주세요">
+<input placeholder="예) 3,000만원">
+<input placeholder="문의 내용을 입력해주세요">
 </div>
-<button>상담 신청 완료</button>
-</form>
+<button class="submit">✈ 무료 상담 신청하기</button>
+<p>🔒 입력하신 정보는 상담 목적으로만 사용되며 안전하게 보호됩니다.</p>
 </section>
+
+<section class="info">
+<h2>A-ONE(에이원) 대출 안내</h2>
+<p>A-one(에이원) 대출은 주로 (주)에이원대부캐피탈에서 취급하는 대부금융 상품을 의미합니다.</p>
+<div class="columns">
+<div>
+<b>신청 대상</b><br>만 20세 이상의 직장인, 주부, 프리랜서 등<br><br>
+<b>대출 금리</b><br>법정 최고 금리 이내 (연 20% 이내)<br><br>
+<b>상환 방식</b><br>원리금균등상환 / 자유상환 / 만기일시상환
 </div>
+<div>
+<b>주요 특징</b><br>중도상환수수료 및 취급수수료 없음<br><br>
+<b>회사 정보</b><br>
+주식회사 에이원대부캐피탈<br>
+등록번호 120-86-38783<br>
+법인등록번호 110111-2546137
+</div>
+</div>
+</section>
 
-<footer>상담 가능 시간<br><b>평일 09:00 ~ 18:00</b></footer>
-
-<script>
-document.getElementById("form").onsubmit=async e=>{
-e.preventDefault();
-await fetch("/api/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});
-alert("상담 신청이 접수되었습니다.");
-}
-</script>
+<footer>상담 가능 시간　평일 09:00 ~ 18:00　　전화 상담 문의 02-555-1234</footer>
 </body>
 </html>
