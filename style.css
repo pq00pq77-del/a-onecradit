@@ -1,13 +1,299 @@
-*{box-sizing:border-box}body{margin:0;background:#fbf8f1;color:#17294d;font-family:Arial,"Noto Sans KR",sans-serif}.header{height:90px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 50px}.logo{font-size:30px;font-weight:bold;color:#b88427}.tel{background:#fff;border:1px solid #ead7ad;padding:10px 25px;border-radius:12px;text-align:center}.hero{height:430px;background:white;display:flex;padding:50px 70px;overflow:hidden}.heroText{width:50%}.heroText p{color:#bd8825;font-size:20px}.hero h1{font-size:70px;margin:15px 0}.hero h1 span{color:#c58d27}.hero button,.submit{background:#d49a2c;color:#fff;border:0;border-radius:8px;padding:18px 45px;font-size:20px}.heroImage{width:50%;background:url('images/main.jpg') center/cover;border-radius:20px}.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:15px;padding:25px 40px}.quick div,.services div,.apply,.info{background:white;border-radius:18px;border:1px solid #ead7ad}.quick div{text-align:center;padding:25px}.services{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;padding:0 40px}.services div{padding:20px;text-align:center}.services small{display:block}.apply,.info{margin:35px 40px;padding:35px}.apply h2,.info h2{text-align:center;color:#bd8825}.form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.form input{padding:18px;border:1px solid #ddd;border-radius:8px}.submit{width:100%;margin-top:20px}.columns{display:grid;grid-template-columns:1fr 1fr;line-height:2}footer{background:#17294d;color:white;padding:25px;text-align:center}@media(max-width:800px){.quick,.services,.form,.columns{grid-template-columns:1fr}.hero{display:block;height:auto}.heroText,.heroImage{width:100%}.hero h1{font-size:40px}}
-#b88427
-#d49a2c
-.hero button,.submit{
-background:#d49a2c;
-  background:#d49a2c;
-  background:#C9A227
-  font-size:70px;
-  font-size:60px;
-  font-size:80px;
-  border-radius:18px;
-  border-radius:25px;
-  
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Noto Sans KR",sans-serif;
+    background:#fffaf2;
+    color:#17233d;
+}
+
+
+.header{
+    height:90px;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 60px;
+    border-bottom:1px solid #eee;
+}
+
+
+.logo{
+    font-size:32px;
+    font-weight:800;
+    color:#c58a22;
+}
+
+
+nav{
+    font-size:16px;
+    color:#17233d;
+}
+
+
+
+
+.main-image{
+    width:100%;
+    background:#fff;
+}
+
+
+.main-image img{
+    width:100%;
+    max-width:1200px;
+    display:block;
+    margin:auto;
+}
+
+
+
+
+.apply-box{
+
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+
+    background:#ffffff;
+
+    border:1px solid #e8d3a6;
+
+    border-radius:20px;
+
+    padding:50px;
+
+    text-align:center;
+}
+
+
+
+.apply-box h2{
+
+    font-size:38px;
+
+    color:#c58a22;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.apply-box p{
+
+    color:#555;
+
+}
+
+
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+    margin-top:35px;
+
+}
+
+
+
+input,
+textarea{
+
+    width:100%;
+
+    padding:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+
+
+textarea{
+
+    height:120px;
+
+}
+
+
+
+.apply-box button{
+
+    margin-top:30px;
+
+    width:100%;
+
+    padding:20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#d39a25;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+
+.safe{
+
+    margin-top:20px;
+
+    font-size:14px;
+
+}
+
+
+
+
+.loan-info{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:50px auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:50px;
+
+    border:1px solid #e8d3a6;
+
+}
+
+
+
+.loan-info h2{
+
+    text-align:center;
+
+    color:#c58a22;
+
+    font-size:35px;
+
+}
+
+
+
+.loan-info p{
+
+    line-height:1.8;
+
+}
+
+
+
+.info-list{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+
+
+.info-list div{
+
+    background:#fffaf2;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    line-height:1.8;
+
+}
+
+
+
+
+footer{
+
+    background:#152440;
+
+    color:white;
+
+    text-align:center;
+
+    padding:35px;
+
+    font-size:18px;
+
+}
+
+
+
+
+@media(max-width:768px){
+
+
+.header{
+
+    padding:0 20px;
+
+}
+
+
+nav{
+
+    display:none;
+
+}
+
+
+
+.logo{
+
+    font-size:24px;
+
+}
+
+
+
+.form-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.apply-box,
+.loan-info{
+
+    padding:25px;
+
+}
+
+
+}
