@@ -2,106 +2,74 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A-One Cradit | 대출 상담 접수</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A-ONE CREDIT</title>
 <style>
-:root{--bg:#050608;--panel:#0b0e12;--gold:#d6a542;--gold2:#f0cf7a;--text:#f7f4ec;--muted:#a8adb7;--line:rgba(214,165,66,.35)}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 10%,rgba(214,165,66,.11),transparent 26%),var(--bg);color:var(--text);font-family:Arial,"Noto Sans KR",sans-serif}
-.container{width:min(1120px,calc(100% - 32px));margin:auto}header{position:sticky;top:0;z-index:10;background:rgba(5,6,8,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(214,165,66,.16)}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:12px;align-items:center;font-weight:900}.mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;font-size:22px}
-.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;margin-top:3px}.nav a{color:var(--gold2);border:1px solid var(--line);padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800}
-.hero{padding:80px 0 36px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}.box{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.035),transparent 45%),var(--panel);box-shadow:0 22px 60px rgba(0,0,0,.42)}
-.hero-copy{padding:52px}.eyebrow{color:var(--gold2);font-weight:900;letter-spacing:.08em;margin-bottom:18px}h1{font-size:clamp(40px,5vw,66px);line-height:1.08;margin:0;letter-spacing:-.04em}h1 span{color:var(--gold2)}.hero-copy p{color:var(--muted);font-size:17px;line-height:1.75;margin-top:22px}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.chip{padding:11px 14px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font-weight:800;font-size:14px}.chip b{color:var(--gold2);margin-right:5px}
-.side{padding:32px;display:flex;flex-direction:column;justify-content:center}.side h2{margin:0 0 10px}.side p{color:var(--muted);line-height:1.6}.quick{display:grid;gap:12px;margin-top:12px}.quick div{display:flex;gap:12px;align-items:center;padding:14px;border-radius:12px;background:#10141a;border:1px solid rgba(255,255,255,.06)}.quick i{font-style:normal;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;font-weight:900}
-.form-section{padding:34px 0 54px}.form-card{padding:42px}.title{text-align:center;margin-bottom:30px}.title h2{font-size:40px;color:var(--gold2);margin:0}.title p{color:var(--muted)}
-form{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}.full{grid-column:1/-1}label{display:block;margin-bottom:8px;font-weight:800;font-size:14px}input,select,textarea{width:100%;background:#090c10;color:var(--text);border:1px solid rgba(214,165,66,.25);border-radius:13px;padding:15px 16px;font-size:16px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(214,165,66,.08)}textarea{min-height:120px;resize:vertical}.agree{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;color:#c4c7cd}.agree input{width:auto;accent-color:var(--gold);margin-top:3px}.submit{grid-column:1/-1}button{width:100%;border:0;border-radius:13px;padding:17px;background:linear-gradient(135deg,var(--gold2),var(--gold));font-size:18px;font-weight:900;color:#17120a;cursor:pointer}.result{grid-column:1/-1;text-align:center;font-weight:900;min-height:24px}.success{color:#55d58a}.error{color:#ff6b6b}.note{grid-column:1/-1;text-align:center;color:#737985;font-size:12px}.hidden{position:absolute;left:-9999px}
-footer{padding:0 0 42px}.hours{display:flex;align-items:center;justify-content:center;gap:18px;padding:24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.03),rgba(214,165,66,.025));box-shadow:0 22px 60px rgba(0,0,0,.42)}.clock{width:54px;height:54px;border-radius:50%;border:2px solid var(--gold);position:relative}.clock:before,.clock:after{content:"";position:absolute;left:50%;top:50%;height:2px;background:var(--gold2);transform-origin:left center}.clock:before{width:15px;transform:rotate(35deg)}.clock:after{width:11px;transform:rotate(-90deg)}.hours strong{display:block;color:#d8d3c7;font-size:15px}.hours span{color:var(--gold2);font-size:clamp(20px,3vw,30px);font-weight:900}
-@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-copy{padding:38px 28px}#company .box>div:last-child{grid-template-columns:1fr!important}}@media(max-width:650px){.nav a{display:none}.hero{padding-top:48px}.form-card{padding:28px 18px}form{grid-template-columns:1fr}.full,.agree,.submit,.result,.note{grid-column:1}}
+*{box-sizing:border-box}body{margin:0;background:#050505;color:#fff;font-family:Arial,"Noto Sans KR",sans-serif}
+.container{max-width:1100px;margin:auto;padding:20px}
+.gold{color:#d8ad55}
+header{border-bottom:1px solid #3d2d12;background:#080808}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px}
+.logo{font-size:28px;font-weight:900;color:#d8ad55}
+.menu span{margin-left:20px;color:#ddd}
+.hero{padding:80px 20px;text-align:center;background:linear-gradient(#050505,#111)}
+.hero h1{font-size:55px}.hero p{color:#aaa;font-size:18px}
+.card{background:#111;border:1px solid #5a431d;border-radius:20px;padding:35px;margin:30px 0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.box{background:#0b0b0b;padding:25px;border-radius:15px;border:1px solid #33250f}
+input,select,textarea{width:100%;padding:15px;background:#080808;border:1px solid #55401d;color:white;border-radius:10px}
+form{display:grid;gap:15px}
+button{background:#d8ad55;color:#111;border:0;padding:18px;border-radius:10px;font-weight:bold;font-size:18px}
+footer{padding:40px;text-align:center;border-top:1px solid #33250f;color:#d8ad55}
+@media(max-width:700px){.cards{grid-template-columns:1fr}.hero h1{font-size:36px}}
 </style>
 </head>
 <body>
-<header><div class="container nav"><div class="brand"><div class="mark">A</div><div>A-ONE CRADIT<small>PREMIUM LOAN CONSULTING</small></div></div><div style="display:flex;gap:10px;align-items:center"><a href="#company">회사소개</a><a href="#apply">대출 상담 신청</a></div></div></header>
+<header><nav class="container"><div class="logo">A-ONE CREDIT</div><div class="menu"><span>대출상담 신청</span><span>대출상품 안내</span><span>회사소개</span></div></nav></header>
 
-<section class="hero"><div class="container hero-grid">
-<div class="box hero-copy"><div class="eyebrow">당신의 든든한 금융 파트너</div><h1>빠르고 정확한<br><span>맞춤 대출 상담</span></h1><p>고객님의 상황을 꼼꼼하게 확인하고 필요한 상담을 빠르게 안내해드립니다.</p><div class="chips"><div class="chip"><b>01</b>신속한 상담</div><div class="chip"><b>02</b>정확한 접수</div><div class="chip"><b>03</b>안전한 진행</div></div></div>
-<div class="box side"><h2>대출 상담 접수</h2><p>아래 정보를 남겨주시면 확인 후 연락드립니다.</p><div class="quick"><div><i>✓</i>간편한 온라인 접수</div><div><i>✓</i>담당자 빠른 확인</div><div><i>✓</i>텔레그램 실시간 전달</div></div></div>
-</div></section>
-
-
-<section id="company" style="padding:10px 0 34px">
-  <div class="container">
-    <div class="box" style="padding:42px">
-      <div class="title" style="margin-bottom:28px">
-        <div class="eyebrow" style="margin-bottom:10px">ABOUT A-ONE CRADIT</div>
-        <h2>신뢰를 바탕으로 한 맞춤 금융상담</h2>
-        <p>A-ONE CRADIT은 고객님의 상황에 맞는 상담을 빠르고 정확하게 안내합니다.</p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:stretch">
-        <div style="padding:28px;border-radius:18px;background:#090c10;border:1px solid rgba(214,165,66,.18)">
-          <h3 style="font-size:26px;margin:0 0 18px;color:var(--gold2)">고객 중심의 상담 서비스</h3>
-          <p style="margin:0;color:var(--muted);line-height:1.85;font-size:16px">
-            복잡한 절차를 줄이고, 필요한 정보를 간편하게 접수할 수 있도록
-            상담 과정을 구성했습니다. 접수된 내용은 담당자가 확인한 뒤
-            고객님의 상황에 맞춰 안내해드립니다.
-          </p>
-          <p style="margin:18px 0 0;color:var(--muted);line-height:1.85;font-size:16px">
-            고객님의 개인정보는 상담 및 연락 목적으로만 사용되며,
-            안전하게 보호됩니다.
-          </p>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-          <div style="padding:22px;border-radius:16px;background:#10141a;border:1px solid rgba(255,255,255,.06)">
-            <div style="color:var(--gold2);font-size:24px;font-weight:900;margin-bottom:10px">01</div>
-            <strong style="display:block;margin-bottom:8px">신속한 접수</strong>
-            <span style="color:var(--muted);font-size:14px;line-height:1.6">온라인으로 간편하게 상담을 신청할 수 있습니다.</span>
-          </div>
-          <div style="padding:22px;border-radius:16px;background:#10141a;border:1px solid rgba(255,255,255,.06)">
-            <div style="color:var(--gold2);font-size:24px;font-weight:900;margin-bottom:10px">02</div>
-            <strong style="display:block;margin-bottom:8px">정확한 확인</strong>
-            <span style="color:var(--muted);font-size:14px;line-height:1.6">입력한 정보를 바탕으로 담당자가 내용을 확인합니다.</span>
-          </div>
-          <div style="padding:22px;border-radius:16px;background:#10141a;border:1px solid rgba(255,255,255,.06)">
-            <div style="color:var(--gold2);font-size:24px;font-weight:900;margin-bottom:10px">03</div>
-            <strong style="display:block;margin-bottom:8px">안전한 정보 관리</strong>
-            <span style="color:var(--muted);font-size:14px;line-height:1.6">상담 목적 외에는 개인정보를 사용하지 않습니다.</span>
-          </div>
-          <div style="padding:22px;border-radius:16px;background:#10141a;border:1px solid rgba(255,255,255,.06)">
-            <div style="color:var(--gold2);font-size:24px;font-weight:900;margin-bottom:10px">04</div>
-            <strong style="display:block;margin-bottom:8px">맞춤형 안내</strong>
-            <span style="color:var(--muted);font-size:14px;line-height:1.6">고객님의 상황에 맞는 상담 방향을 안내합니다.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="hero">
+<h1>빠르고 정확한<br><span class="gold">맞춤 대출 상담</span></h1>
+<p>고객님의 상황에 맞는 금융 상담을 안내해드립니다.</p>
 </section>
 
-<section class="form-section" id="apply"><div class="container"><div class="box form-card"><div class="title"><h2>대출 상담 신청</h2><p>필수 정보를 정확하게 입력해주세요.</p></div>
-<form id="applyForm">
-<div><label for="name">이름</label><input id="name" name="name" required placeholder="이름을 입력해주세요"></div>
-<div><label for="phone">휴대폰번호</label><input id="phone" name="phone" type="tel" required placeholder="010-0000-0000"></div>
-<div><label for="birth">생년월일</label><input id="birth" name="birth" type="date" required></div>
-<div><label for="job">직업</label><select id="job" name="job" required><option value="">직업을 선택해주세요</option><option>직장인</option><option>개인사업자</option><option>법인사업자</option><option>프리랜서</option><option>주부</option><option>무직</option><option>기타</option></select></div>
-<div><label for="amount">희망금액</label><input id="amount" name="amount" required placeholder="예: 3,000만원"></div>
-<div><label for="message">문의내용</label><input id="message" name="message" required placeholder="문의 내용을 입력해주세요"></div>
-<div class="hidden"><input name="company" tabindex="-1" autocomplete="off"></div>
-<label class="agree"><input type="checkbox" required><span>상담 연락을 위한 개인정보 수집 및 이용에 동의합니다.</span></label>
-<div class="submit"><button id="submitBtn" type="submit">상담 신청하기</button></div>
-<div id="result" class="result" aria-live="polite"></div>
-<div class="note">입력한 정보는 상담 접수 및 연락 목적으로만 사용됩니다.</div>
-</form></div></div></section>
+<div class="container">
+<section class="card">
+<h2 class="gold">회사소개</h2>
+<p> A-ONE CREDIT은 고객 중심의 상담 서비스를 제공하며 빠르고 정확한 상담을 목표로 합니다.</p>
+</section>
 
-<footer><div class="container"><div class="hours"><div class="clock"></div><div><strong>상담 가능 시간</strong><span>평일 09:00 ~ 18:00</span></div></div></div></footer>
+<section class="cards">
+<div class="box"><h3 class="gold">맞춤 상담</h3><p>개인 상황에 맞는 상담 안내</p></div>
+<div class="box"><h3 class="gold">간편 접수</h3><p>온라인으로 빠른 신청</p></div>
+<div class="box"><h3 class="gold">안전 관리</h3><p>상담 목적의 정보 관리</p></div>
+</section>
+
+<section class="card">
+<h2 class="gold">대출 상담 신청</h2>
+<form id="applyForm">
+<input name="name" placeholder="이름" required>
+<input name="phone" placeholder="휴대폰번호" required>
+<input name="birth" placeholder="생년월일" required>
+<input name="job" placeholder="직업" required>
+<input name="amount" placeholder="희망금액" required>
+<textarea name="message" placeholder="문의내용"></textarea>
+<button>상담 신청하기</button>
+<div id="result"></div>
+</form>
+</section>
+</div>
+
+<footer>
+상담 가능 시간<br>
+<b>평일 09:00 ~ 18:00</b>
+</footer>
 
 <script>
-const form=document.getElementById("applyForm"),btn=document.getElementById("submitBtn"),result=document.getElementById("result");
-form.addEventListener("submit",async e=>{e.preventDefault();btn.disabled=true;btn.textContent="접수 중...";result.className="result";result.textContent="";
-const payload=Object.fromEntries(new FormData(form).entries());
-try{const r=await fetch("/api/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw new Error(d.error||"접수에 실패했습니다.");result.className="result success";result.textContent="접수가 완료되었습니다.";form.reset()}
-catch(err){result.className="result error";result.textContent=err.message||"오류가 발생했습니다."}
-finally{btn.disabled=false;btn.textContent="상담 신청하기"}});
+document.getElementById("applyForm").onsubmit=async e=>{
+e.preventDefault();
+let r=await fetch("/api/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});
+document.getElementById("result").innerText=r.ok?"접수가 완료되었습니다.":"전송 실패";
+}
 </script>
 </body>
 </html>
