@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A-One Cradit 대출 상담 접수" />
+  <title>A-One Cradit 상담 접수</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background: linear-gradient(135deg, #eef3ff, #f8f9fc);
+      color: #111827;
+    }
+    .wrap {
+      width: min(680px, calc(100% - 28px));
+      margin: 38px auto;
+    }
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 18px 50px rgba(17, 24, 39, .10);
+    }
+    .brand {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: #315efb;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+    .sub {
+      margin: 0 0 26px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    label {
+      display: block;
+      margin: 17px 0 7px;
+      font-weight: 700;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #d7dce5;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background: #fff;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #315efb;
+      box-shadow: 0 0 0 3px rgba(49, 94, 251, .10);
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .agree {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin: 20px 0;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .agree input {
+      width: auto;
+      margin-top: 4px;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px;
+      background: #315efb;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+    #result {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 800;
+      min-height: 24px;
+    }
+    .success { color: #0f8a4b; }
+    .error { color: #c62828; }
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #7b8190;
+      line-height: 1.6;
+    }
+    .hidden {
+      position: absolute;
+      left: -9999px;
+    }
+    @media (max-width: 520px) {
+      .card { padding: 23px 18px; }
+      h1 { font-size: 27px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="brand">A-ONE CRADIT</div>
+      <h1>대출 상담 접수</h1>
+      <p class="sub">아래 내용을 입력하면 담당자가 확인 후 연락드립니다.</p>
+
+      <form id="applyForm">
+        <label for="name">이름</label>
+        <input id="name" name="name" type="text" maxlength="30" required placeholder="이름을 입력하세요" />
+
+        <label for="phone">휴대폰번호</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" maxlength="20" required placeholder="010-0000-0000" />
+
+        <label for="birth">생년월일</label>
+        <input id="birth" name="birth" type="date" required />
+
+        <label for="job">직업</label>
+        <select id="job" name="job" required>
+          <option value="">선택하세요</option>
+          <option>직장인</option>
+          <option>개인사업자</option>
+          <option>법인사업자</option>
+          <option>프리랜서</option>
+          <option>주부</option>
+          <option>무직</option>
+          <option>기타</option>
+        </select>
+
+        <label for="amount">희망금액</label>
+        <input id="amount" name="amount" type="text" maxlength="40" required placeholder="예: 3,000만원" />
+
+        <label for="message">문의내용</label>
+        <textarea id="message" name="message" maxlength="1000" required placeholder="문의내용을 입력하세요"></textarea>
+
+        <div class="hidden" aria-hidden="true">
+          <label>회사명<input name="company" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <label class="agree">
+          <input id="agree" type="checkbox" required />
+          <span>상담 연락을 위한 개인정보 수집 및 이용에 동의합니다.</span>
+        </label>
+
+        <button id="submitBtn" type="submit">접수하기</button>
+        <div id="result" aria-live="polite"></div>
+      </form>
+
+      <p class="note">
+        입력한 정보는 상담 접수와 연락 목적으로만 사용하세요.
+        실제 운영 전 개인정보처리방침과 관련 법령을 반드시 확인하세요.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("applyForm");
+    const btn = document.getElementById("submitBtn");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      btn.disabled = true;
+      btn.textContent = "접수 중...";
+      result.className = "";
+      result.textContent = "";
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const response = await fetch("/api/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "접수에 실패했습니다.");
+
+        result.className = "success";
+        result.textContent = "접수가 완료되었습니다.";
+        form.reset();
+      } catch (error) {
+        result.className = "error";
+        result.textContent = error.message || "오류가 발생했습니다.";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "접수하기";
+      }
+    });
+  </script>
+</body>
+</html>
