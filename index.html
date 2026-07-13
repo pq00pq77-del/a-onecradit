@@ -1,75 +1,51 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A-ONE CREDIT</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050505;color:#fff;font-family:Arial,"Noto Sans KR",sans-serif}
-.container{max-width:1100px;margin:auto;padding:20px}
-.gold{color:#d8ad55}
-header{border-bottom:1px solid #3d2d12;background:#080808}
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px}
-.logo{font-size:28px;font-weight:900;color:#d8ad55}
-.menu span{margin-left:20px;color:#ddd}
-.hero{padding:80px 20px;text-align:center;background:linear-gradient(#050505,#111)}
-.hero h1{font-size:55px}.hero p{color:#aaa;font-size:18px}
-.card{background:#111;border:1px solid #5a431d;border-radius:20px;padding:35px;margin:30px 0}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.box{background:#0b0b0b;padding:25px;border-radius:15px;border:1px solid #33250f}
-input,select,textarea{width:100%;padding:15px;background:#080808;border:1px solid #55401d;color:white;border-radius:10px}
-form{display:grid;gap:15px}
-button{background:#d8ad55;color:#111;border:0;padding:18px;border-radius:10px;font-weight:bold;font-size:18px}
-footer{padding:40px;text-align:center;border-top:1px solid #33250f;color:#d8ad55}
-@media(max-width:700px){.cards{grid-template-columns:1fr}.hero h1{font-size:36px}}
+*{box-sizing:border-box}body{margin:0;background:#050708;color:#fff;font-family:Arial,"Noto Sans KR",sans-serif}
+.gold{color:#d7a94b}.wrap{max-width:1200px;margin:auto;padding:20px}
+header{height:70px;border-bottom:1px solid #2c2110;background:#060606}
+nav{display:flex;justify-content:space-between;align-items:center;height:100%}
+.logo{font-size:24px;font-weight:bold;color:#d7a94b}.menu span{margin-left:25px;font-size:14px}
+.hero{min-height:420px;padding:90px 30px;background:linear-gradient(90deg,#050708 20%,rgba(5,7,8,.5)),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80') center/cover}
+.hero h1{font-size:56px;line-height:1.2;margin:20px 0}.hero p{color:#ddd}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:-30px auto 40px}
+.card{background:#0c0f12;border:1px solid #5a421b;border-radius:12px;padding:25px;text-align:center}
+.form{background:#090b0e;border:1px solid #76551c;border-radius:15px;padding:40px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+input,textarea{width:100%;background:#090909;border:1px solid #493719;color:#fff;padding:15px;border-radius:6px}
+button{width:100%;margin-top:20px;background:#d7a94b;border:0;padding:18px;font-weight:bold}
+footer{text-align:center;padding:35px;color:#d7a94b}
+@media(max-width:800px){.cards,.grid{grid-template-columns:1fr}.hero h1{font-size:38px}}
 </style>
 </head>
 <body>
-<header><nav class="container"><div class="logo">A-ONE CREDIT</div><div class="menu"><span>대출상담 신청</span><span>대출상품 안내</span><span>회사소개</span></div></nav></header>
-
-<section class="hero">
-<h1>빠르고 정확한<br><span class="gold">맞춤 대출 상담</span></h1>
-<p>고객님의 상황에 맞는 금융 상담을 안내해드립니다.</p>
-</section>
-
-<div class="container">
-<section class="card">
-<h2 class="gold">회사소개</h2>
-<p> A-ONE CREDIT은 고객 중심의 상담 서비스를 제공하며 빠르고 정확한 상담을 목표로 합니다.</p>
-</section>
-
-<section class="cards">
-<div class="box"><h3 class="gold">맞춤 상담</h3><p>개인 상황에 맞는 상담 안내</p></div>
-<div class="box"><h3 class="gold">간편 접수</h3><p>온라인으로 빠른 신청</p></div>
-<div class="box"><h3 class="gold">안전 관리</h3><p>상담 목적의 정보 관리</p></div>
-</section>
-
-<section class="card">
-<h2 class="gold">대출 상담 신청</h2>
-<form id="applyForm">
-<input name="name" placeholder="이름" required>
-<input name="phone" placeholder="휴대폰번호" required>
-<input name="birth" placeholder="생년월일" required>
-<input name="job" placeholder="직업" required>
-<input name="amount" placeholder="희망금액" required>
-<textarea name="message" placeholder="문의내용"></textarea>
-<button>상담 신청하기</button>
-<div id="result"></div>
-</form>
-</section>
+<header><nav class="wrap"><div class="logo">A-ONE CREDIT</div><div class="menu"><span>대출상담 신청</span><span>대출상품 안내</span><span>회사소개</span></div></nav></header>
+<section class="hero"><div class="wrap"><div class="gold">당신의 든든한 금융 파트너</div><h1>빠르고 정확한<br><span class="gold">맞춤 대출 상담</span></h1><p>고객님의 상황에 맞는 최적의 상담을 안내해드립니다.</p></div></section>
+<div class="wrap">
+<div class="cards">
+<div class="card"><h3 class="gold">다양한 대출 상품</h3><p>맞춤 상담 안내</p></div>
+<div class="card"><h3 class="gold">빠른 심사 및 승인</h3><p>간편한 상담 진행</p></div>
+<div class="card"><h3 class="gold">최저 금리 비교</h3><p>상황별 안내</p></div>
+<div class="card"><h3 class="gold">전문 상담 지원</h3><p>친절한 상담</p></div>
 </div>
-
-<footer>
-상담 가능 시간<br>
-<b>평일 09:00 ~ 18:00</b>
-</footer>
-
+<div class="form">
+<h2 class="gold" style="text-align:center">대출 상담 신청</h2>
+<form id="f"><div class="grid">
+<input name="name" placeholder="이름">
+<input name="phone" placeholder="연락처">
+<input name="birth" placeholder="생년월일">
+<input name="job" placeholder="직업">
+<input name="amount" placeholder="희망 금액">
+<input name="message" placeholder="문의 내용">
+</div><button>상담 신청하기</button></form>
+</div>
+</div>
+<footer>상담 가능 시간<br><b>평일 09:00 ~ 18:00</b></footer>
 <script>
-document.getElementById("applyForm").onsubmit=async e=>{
-e.preventDefault();
-let r=await fetch("/api/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});
-document.getElementById("result").innerText=r.ok?"접수가 완료되었습니다.":"전송 실패";
-}
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});alert('접수되었습니다');}
 </script>
-</body>
-</html>
+</body></html>
