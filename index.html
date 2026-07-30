@@ -19,7 +19,7 @@
 
   <link
     rel="stylesheet"
-    href="/style.css"
+    href="/style.css?v=20260730-2"
   >
 </head>
 
@@ -95,31 +95,28 @@
           </h1>
 
 
-          <p class="hero-description">
-           <div class="hero-target-box">
+          <div class="hero-target-box">
 
-  <div class="hero-target-title">
-    <span>무직자</span>
-    <i>·</i>
-    <span>저신용자</span>
-  </div>
+            <div class="hero-target-title">
+              <span>무직자</span>
+              <i>·</i>
+              <span>저신용자</span>
+            </div>
 
-  <strong>
-    상담 신청 가능합니다
-  </strong>
+            <strong>
+              상담 신청 가능합니다
+            </strong>
 
-  <p>
-    간단한 정보를 입력하면 담당 상담원이 확인 후 연락드립니다.
-    상담 신청만으로 신용조회가 진행되지 않습니다.
-  </p>
+            <p>
+              간단한 정보를 입력하면 담당 상담원이 확인 후 연락드립니다.
+              상담 신청만으로 신용조회가 진행되지 않습니다.
+            </p>
 
-  <small>
-    ※ 상담 신청은 대출 승인이나 실행을 보장하지 않습니다.
-  </small>
+            <small>
+              ※ 상담 신청은 대출 승인이나 실행을 보장하지 않습니다.
+            </small>
 
-</div>
-            
-          </p>
+          </div>
 
 
           <div class="trust-box">
@@ -144,94 +141,44 @@
 
 
           <div
- <div
-  class="benefit-list premium-benefit-list"
-  id="service"
->
+            class="benefit-list premium-benefit-list"
+            id="service"
+          >
 
-  <article class="premium-benefit-card card-apply">
+            <article class="premium-benefit-card card-apply">
 
-    <span class="benefit-number">
-      01
-    </span>
+              <span class="benefit-number">
+                01
+              </span>
 
-    <div class="benefit-icon">
-      ⚡
-    </div>
+              <div class="benefit-icon">
+                ⚡
+              </div>
 
-    <strong>
-      간편 신청
-    </strong>
+              <strong>
+                간편 신청
+              </strong>
 
-    <p>
-      3단계로 빠르게 접수
-    </p>
+              <p>
+                3단계로 빠르게 접수
+              </p>
 
-    <div class="benefit-highlight">
-      ✓ 3분이면 신청 완료
-    </div>
+              <div class="benefit-highlight">
+                ✓ 3분이면 신청 완료
+              </div>
 
-  </article>
-
-
-  <article class="premium-benefit-card card-free">
-
-    <span class="benefit-number">
-      02
-    </span>
-
-    <div class="benefit-icon">
-      💬
-    </div>
-
-    <strong>
-      무료 상담
-    </strong>
-
-    <p>
-      별도의 상담 비용 없음
-    </p>
-
-    <div class="benefit-highlight">
-      ✓ 전문 상담사 배정
-    </div>
-
-  </article>
-
-
-  <article class="premium-benefit-card card-online">
-
-    <span class="benefit-number">
-      03
-    </span>
-
-    <div class="benefit-icon">
-      📱
-    </div>
-
-    <strong>
-      비대면 상담
-    </strong>
-
-    <p>
-      온라인으로 간편하게
-    </p>
-
-    <div class="benefit-highlight">
-      ✓ 신용조회 없이 상담
-    </div>
-
-  </article>
-
-</div>
             </article>
 
 
-            <article>
+            <article class="premium-benefit-card card-free">
 
-              <span>
+              <span class="benefit-number">
                 02
               </span>
+
+              <div class="benefit-icon">
+                💬
+              </div>
 
               <strong>
                 무료 상담
@@ -241,14 +188,22 @@
                 별도의 상담 비용 없음
               </p>
 
+              <div class="benefit-highlight">
+                ✓ 전문 상담사 배정
+              </div>
+
             </article>
 
 
-            <article>
+            <article class="premium-benefit-card card-online">
 
-              <span>
+              <span class="benefit-number">
                 03
               </span>
+
+              <div class="benefit-icon">
+                📱
+              </div>
 
               <strong>
                 비대면 상담
@@ -257,6 +212,10 @@
               <p>
                 온라인으로 간편하게
               </p>
+
+              <div class="benefit-highlight">
+                ✓ 신용조회 없이 상담
+              </div>
 
             </article>
 
@@ -514,6 +473,82 @@
                       기타
                     </span>
 
+                  </label>
+
+                </div>
+
+              </fieldset>
+
+
+              <fieldset class="choice-section">
+
+                <legend>
+                  금융권 연체
+                </legend>
+
+                <div class="choice-grid">
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="financeLate"
+                      value="유"
+                      required
+                    >
+
+                    <span>
+                      유
+                    </span>
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="financeLate"
+                      value="무"
+                    >
+
+                    <span>
+                      무
+                    </span>
+                  </label>
+
+                </div>
+
+              </fieldset>
+
+
+              <fieldset class="choice-section">
+
+                <legend>
+                  통신 연체
+                </legend>
+
+                <div class="choice-grid">
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="phoneLate"
+                      value="유"
+                      required
+                    >
+
+                    <span>
+                      유
+                    </span>
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="phoneLate"
+                      value="무"
+                    >
+
+                    <span>
+                      무
+                    </span>
                   </label>
 
                 </div>
@@ -963,8 +998,6 @@
 
     </section>
 
-  </main>
-
 <section class="business-info-section">
   <div class="container">
 
@@ -982,7 +1015,7 @@
 
       <p>
         <strong>대표자</strong>
-        주환곤
+        주환군
       </p>
 
       <p>
@@ -1030,6 +1063,9 @@
 
   </div>
 </section>
+
+  </main>
+
   <footer class="footer">
 
     <div class="container">
@@ -1062,7 +1098,7 @@
   ></div>
 
 
-  <script src="/script.js"></script>
+  <script src="/script.js?v=20260730-2"></script>
 
 </body>
 </html>
