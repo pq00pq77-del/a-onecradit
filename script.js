@@ -33,20 +33,27 @@ function updateStep() {
   });
 
   const progressValues = [33, 66, 100];
-  const progress = progressValues[currentStep];
+  const progress =
+    progressValues[currentStep] || 100;
 
   if (progressBar) {
-    progressBar.style.width = progress + '%';
+    progressBar.style.width =
+      progress + '%';
   }
 
   if (progressText) {
-    progressText.textContent = progress + '%';
+    progressText.textContent =
+      progress + '%';
   }
 }
 
 
 /* 현재 단계 필수 입력 확인 */
 function validateCurrentStep() {
+  if (!steps[currentStep]) {
+    return true;
+  }
+
   const fields =
     steps[currentStep].querySelectorAll(
       'input, select, textarea'
@@ -115,12 +122,15 @@ if (phoneInput) {
           .slice(0, 11);
 
       if (numbers.length < 4) {
-        event.target.value = numbers;
+        event.target.value =
+          numbers;
+
       } else if (numbers.length < 8) {
         event.target.value =
           numbers.slice(0, 3)
           + '-'
           + numbers.slice(3);
+
       } else {
         event.target.value =
           numbers.slice(0, 3)
@@ -140,7 +150,8 @@ function showToast(message, isError) {
     return;
   }
 
-  toast.textContent = message;
+  toast.textContent =
+    message;
 
   if (isError) {
     toast.classList.add('error');
@@ -181,10 +192,15 @@ function formatRelativeTime(dateValue) {
   }
 
   const difference =
-    Math.max(0, Date.now() - createdTime);
+    Math.max(
+      0,
+      Date.now() - createdTime
+    );
 
   const minutes =
-    Math.floor(difference / 60000);
+    Math.floor(
+      difference / 60000
+    );
 
   if (minutes < 1) {
     return '방금 전';
@@ -195,30 +211,68 @@ function formatRelativeTime(dateValue) {
   }
 
   const hours =
-    Math.floor(minutes / 60);
+    Math.floor(
+      minutes / 60
+    );
 
   if (hours < 24) {
     return hours + '시간 전';
   }
 
   const days =
-    Math.floor(hours / 24);
+    Math.floor(
+      hours / 24
+    );
 
   return days + '일 전';
 }
 
 
-/* 상태별 CSS */
+/* 상태별 색상 클래스 */
 function getStatusClass(status) {
-  if (status === '상담 완료') {
-    return 'complete';
+  const cleanStatus =
+    String(status || '')
+      .replace(/\s/g, '');
+
+  if (cleanStatus === '승인완료') {
+    return 'approved';
   }
 
-  if (status === '상담 중') {
+  if (cleanStatus === '진행중') {
     return 'progress';
   }
 
+  if (cleanStatus === '상담중') {
+    return 'consulting';
+  }
+
   return 'waiting';
+}
+
+
+/* 성씨별 색상 클래스 */
+function getSurnameClass(name) {
+  const surname =
+    String(name || '')
+      .trim()
+      .charAt(0);
+
+  switch (surname) {
+    case '김':
+      return 'surname-kim';
+
+    case '박':
+      return 'surname-park';
+
+    case '이':
+      return 'surname-lee';
+
+    case '최':
+      return 'surname-choi';
+
+    default:
+      return 'surname-default';
+  }
 }
 
 
@@ -229,15 +283,17 @@ async function loadRecentConsultations() {
   }
 
   try {
-    const response = await fetch(
-      '/api/recent?time=' + Date.now(),
-      {
-        method: 'GET',
-        cache: 'no-store'
-      }
-    );
+    const response =
+      await fetch(
+        '/api/recent?time=' + Date.now(),
+        {
+          method: 'GET',
+          cache: 'no-store'
+        }
+      );
 
-    const result = await response.json();
+    const result =
+      await response.json();
 
     if (!response.ok) {
       throw new Error(
@@ -264,35 +320,60 @@ async function loadRecentConsultations() {
     recentList.innerHTML =
       items.map(function (item) {
         const maskedName =
-          escapeText(item.name_masked || '고객**');
+          escapeText(
+            item.name_masked ||
+            '고객**'
+          );
 
         const firstLetter =
           escapeText(
-            String(item.name_masked || '고객')
-              .charAt(0)
+            String(
+              item.name_masked ||
+              '고객'
+            ).charAt(0)
           );
 
         const job =
-          escapeText(item.job || '기타');
+          escapeText(
+            item.job ||
+            '기타'
+          );
 
         const amount =
-          escapeText(item.amount || '상담 문의');
+          escapeText(
+            item.amount ||
+            '상담 문의'
+          );
 
         const status =
-          escapeText(item.status || '상담 대기');
+          escapeText(
+            item.status ||
+            '상담 대기'
+          );
 
         const statusClass =
-          getStatusClass(item.status);
+          getStatusClass(
+            item.status
+          );
+
+        const surnameClass =
+          getSurnameClass(
+            item.name_masked
+          );
 
         const relativeTime =
-          formatRelativeTime(item.created_at);
+          formatRelativeTime(
+            item.created_at
+          );
 
         return `
           <article class="recent-item">
 
             <div class="customer-info">
 
-              <span class="customer-icon">
+              <span
+                class="customer-icon ${surnameClass}"
+              >
                 ${firstLetter}
               </span>
 
@@ -303,9 +384,11 @@ async function loadRecentConsultations() {
 
                 <small>
                   ${job} · ${amount}
-                  ${relativeTime
-                    ? ' · ' + relativeTime
-                    : ''}
+                  ${
+                    relativeTime
+                      ? ' · ' + relativeTime
+                      : ''
+                  }
                 </small>
               </div>
 
@@ -347,8 +430,13 @@ if (form) {
         return;
       }
 
-      submitButton.disabled = true;
-      submitButton.textContent = '접수 중...';
+      if (submitButton) {
+        submitButton.disabled =
+          true;
+
+        submitButton.textContent =
+          '접수 중...';
+      }
 
       const formData =
         new FormData(form);
@@ -410,9 +498,13 @@ if (form) {
         );
 
       } finally {
-        submitButton.disabled = false;
-        submitButton.textContent =
-          '상담 신청 완료';
+        if (submitButton) {
+          submitButton.disabled =
+            false;
+
+          submitButton.textContent =
+            '상담 신청 완료';
+        }
       }
     }
   );
@@ -421,10 +513,11 @@ if (form) {
 
 /* 처음 사이트 열 때 실행 */
 updateStep();
+
 loadRecentConsultations();
 
 
-/* 10초마다 실시간 새로고침 */
+/* 10초마다 자동 새로고침 */
 setInterval(
   loadRecentConsultations,
   10000
