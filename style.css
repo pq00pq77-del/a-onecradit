@@ -1041,3 +1041,89 @@ textarea {
   background: rgba(215, 180, 90, 0.12);
   border-color: #d7b45a;
 }
+/* 사업자 등록정보 */
+
+.business-info-section {
+  padding: 55px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #07111a;
+  text-align: center;
+}
+
+.business-info-title {
+  margin-bottom: 27px;
+}
+
+.business-info-title span {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid rgba(53, 219, 195, 0.35);
+  border-radius: 999px;
+  color: #35dbc3;
+  background: rgba(53, 219, 195, 0.08);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.business-info-title h2 {
+  margin: 15px 0 0;
+  color: #ffffff;
+  font-size: 28px;
+}
+
+.business-info-list {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.business-info-list p {
+  margin: 8px 0;
+  color: #9aa9ba;
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.business-info-list strong {
+  margin-right: 10px;
+  color: #d8a83d;
+  font-weight: 800;
+}
+
+.business-info-notice {
+  margin: 22px 0 0;
+  color: #718398;
+  font-size: 12px;
+}
+
+
+/* 모바일 */
+
+@media (max-width: 640px) {
+
+  .business-info-section {
+    padding: 42px 12px;
+  }
+
+  .business-info-title h2 {
+    font-size: 25px;
+  }
+
+  .business-info-list {
+    padding: 22px 12px;
+  }
+
+  .business-info-list p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .business-info-list strong {
+    display: block;
+    margin: 0 0 2px;
+  }
+
+}
