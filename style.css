@@ -1125,3 +1125,559 @@ textarea {
   }
 
 }
+/* ==================================================
+   A-ONE CREDIT 밝은 은행 스타일
+   style.css 맨 아래에 전부 붙여넣기
+================================================== */
+
+:root {
+  --background: #f5f8fc;
+  --background-light: #eef4fb;
+  --card-background: #ffffff;
+  --line: #dfe7f1;
+  --text: #172033;
+  --muted: #65748a;
+  --dark-text: #172033;
+  --mint: #168bff;
+  --gold: #d8a83d;
+  --blue: #1769e8;
+}
+
+
+/* 전체 배경과 글자 */
+
+html,
+body {
+  background: #f5f8fc;
+  color: #172033;
+}
+
+
+/* 헤더 */
+
+.header {
+  border-bottom: 1px solid #e1e8f1;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 4px 18px rgba(19, 43, 76, 0.06);
+}
+
+.logo {
+  color: #172033;
+}
+
+.logo-icon {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #1769e8,
+    #4c93ff
+  );
+}
+
+.nav {
+  color: #536277;
+}
+
+.nav a:hover {
+  color: #1769e8;
+}
+
+
+/* 메인 상단 */
+
+.hero {
+  background-color: #f5f8fc;
+  background-image:
+    linear-gradient(
+      rgba(23, 105, 232, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(23, 105, 232, 0.035) 1px,
+      transparent 1px
+    );
+}
+
+.hero-light-one {
+  background: #5aa7ff;
+  opacity: 0.18;
+}
+
+.hero-light-two {
+  background: #ffd97a;
+  opacity: 0.2;
+}
+
+.hero-text h1 {
+  color: #172033;
+}
+
+.hero-text h1 strong {
+  background: linear-gradient(
+    90deg,
+    #1769e8,
+    #4b8ef7,
+    #d8a83d
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.hero-description {
+  color: #65748a;
+}
+
+
+/* 공통 배지 */
+
+.small-badge {
+  color: #1769e8;
+  border-color: rgba(23, 105, 232, 0.24);
+  background: rgba(23, 105, 232, 0.08);
+}
+
+.time-badge {
+  color: #1769e8;
+  background: #e9f2ff;
+}
+
+
+/* 안심 상담 박스 */
+
+.trust-box {
+  border-color: rgba(216, 168, 61, 0.35);
+  background: #fffaf0;
+  box-shadow: 0 10px 28px rgba(105, 79, 28, 0.08);
+}
+
+.trust-check {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #d8a83d,
+    #f0c76a
+  );
+}
+
+.trust-box span {
+  color: #7c8796;
+}
+
+.trust-box strong {
+  color: #172033;
+}
+
+
+/* 상단 장점 카드 */
+
+.benefit-list article {
+  border-color: #dfe7f1;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(19, 43, 76, 0.07);
+}
+
+.benefit-list article > span {
+  color: #d39d26;
+}
+
+.benefit-list strong {
+  color: #172033;
+}
+
+.benefit-list p {
+  color: #65748a;
+}
+
+
+/* 상담 신청 카드 */
+
+.application-card {
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #e1e8f1;
+  box-shadow: 0 24px 60px rgba(26, 63, 108, 0.14);
+}
+
+.application-header h2 {
+  color: #172033;
+}
+
+.application-header p {
+  color: #718096;
+}
+
+
+/* 진행률 */
+
+.progress-title {
+  color: #718096;
+}
+
+.progress-title strong {
+  color: #1769e8;
+}
+
+.progress-background {
+  background: #e8eef6;
+}
+
+.progress-bar {
+  background: linear-gradient(
+    90deg,
+    #1769e8,
+    #4d94ff,
+    #d8a83d
+  );
+}
+
+
+/* 입력창 */
+
+.step-number {
+  color: #1769e8;
+  background: #e9f2ff;
+}
+
+.step-heading strong {
+  color: #172033;
+}
+
+.step-heading p {
+  color: #7c899b;
+}
+
+.input-group > span,
+.choice-section legend {
+  color: #314056;
+}
+
+input,
+select,
+textarea {
+  color: #172033;
+  background: #f8fafc;
+  border-color: #d9e2ee;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #1769e8;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(23, 105, 232, 0.11);
+}
+
+.choice-grid label span {
+  color: #425168;
+  border-color: #d9e2ee;
+  background: #f8fafc;
+}
+
+.choice-grid input:checked + span {
+  color: #1558bd;
+  border-color: #1769e8;
+  background: #e9f2ff;
+  box-shadow: 0 0 0 3px rgba(23, 105, 232, 0.09);
+}
+
+
+/* 버튼 */
+
+.main-button {
+  color: #ffffff;
+  background: linear-gradient(
+    90deg,
+    #145ed4,
+    #2478ef
+  );
+  box-shadow: 0 13px 28px rgba(23, 105, 232, 0.24);
+}
+
+.main-button:hover {
+  box-shadow: 0 16px 34px rgba(23, 105, 232, 0.3);
+}
+
+.back-button {
+  color: #536277;
+  background: #e9eef5;
+}
+
+.privacy-box {
+  border-color: #d9e2ee;
+  background: #f8fafc;
+}
+
+.privacy-box strong {
+  color: #28364a;
+}
+
+.privacy-box small {
+  color: #7c899b;
+}
+
+.privacy-box input {
+  accent-color: #1769e8;
+}
+
+
+/* 최근 상담 현황 */
+
+.recent-section {
+  background: #f5f8fc;
+}
+
+.recent-card {
+  border-color: #dfe7f1;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(19, 43, 76, 0.09);
+}
+
+.recent-header h2 {
+  color: #172033;
+}
+
+.recent-header p {
+  color: #65748a;
+}
+
+.live-status {
+  color: #1769e8;
+  border-color: rgba(23, 105, 232, 0.25);
+  background: rgba(23, 105, 232, 0.08);
+}
+
+.live-status i {
+  background: #1769e8;
+  box-shadow: 0 0 12px rgba(23, 105, 232, 0.6);
+}
+
+.recent-list {
+  border-top-color: #e1e8f1;
+}
+
+.recent-item {
+  border-bottom-color: #e1e8f1;
+}
+
+.customer-info strong {
+  color: #172033;
+}
+
+.customer-info small {
+  color: #65748a;
+}
+
+.recent-empty,
+.recent-notice {
+  color: #718096;
+}
+
+
+/* 상담 상태 */
+
+.consult-status.waiting {
+  color: #1769e8;
+  background: #e8f1ff;
+  border-color: #bdd4f8;
+}
+
+.consult-status.consulting {
+  color: #d97706;
+  background: #fff3dc;
+  border-color: #f4d29a;
+}
+
+.consult-status.progress {
+  color: #7c3aed;
+  background: #f1eafe;
+  border-color: #d5c1f8;
+}
+
+.consult-status.approved {
+  color: #06885f;
+  background: #e0f8ef;
+  border-color: #aee7d3;
+}
+
+
+/* 성씨 아이콘 */
+
+.customer-icon {
+  background: #ffffff;
+}
+
+.customer-icon.surname-kim {
+  color: #b98200;
+  background: #fff7dc;
+  border-color: #e9c769;
+}
+
+.customer-icon.surname-park {
+  color: #07845c;
+  background: #e5f8f1;
+  border-color: #9cdbc5;
+}
+
+.customer-icon.surname-lee {
+  color: #7541c8;
+  background: #f0e9fc;
+  border-color: #ccb6ed;
+}
+
+.customer-icon.surname-choi {
+  color: #1769e8;
+  background: #e9f2ff;
+  border-color: #a9c9f7;
+}
+
+.customer-icon.surname-default {
+  color: #a67820;
+  background: #fff8e6;
+  border-color: #dbc17e;
+}
+
+
+/* 상담 진행 절차 */
+
+.process-section {
+  background: #f5f8fc;
+}
+
+.process-card {
+  border-color: #dfe7f1;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(19, 43, 76, 0.08);
+}
+
+.process-card h2 {
+  color: #172033;
+}
+
+.process-list article {
+  border-color: #dfe7f1;
+  background: #f9fbfe;
+}
+
+.process-list article > span {
+  color: #d39d26;
+}
+
+.process-list strong {
+  color: #172033;
+}
+
+.process-list p {
+  color: #65748a;
+}
+
+
+/* 회사 소개 */
+
+.company-section {
+  border-top-color: #dfe7f1;
+  background: #ffffff;
+}
+
+.company-section h2 {
+  color: #172033;
+}
+
+.company-section p {
+  color: #65748a;
+}
+
+.company-information {
+  border-top-color: #dfe7f1;
+}
+
+.company-information div {
+  border-bottom-color: #dfe7f1;
+}
+
+.company-information span {
+  color: #65748a;
+}
+
+.company-information strong {
+  color: #172033;
+}
+
+
+/* 사업자 등록정보 */
+
+.business-info-section {
+  border-top: 1px solid #dfe7f1;
+  background: #f5f8fc;
+}
+
+.business-info-section h2 {
+  color: #172033;
+}
+
+.business-info-list {
+  border-top-color: #dfe7f1;
+  border-bottom-color: #dfe7f1;
+}
+
+.business-info-list span {
+  color: #b58117;
+}
+
+.business-info-list strong {
+  color: #536277;
+}
+
+.business-info-notice {
+  color: #7a8798;
+}
+
+
+/* 푸터 */
+
+.footer {
+  color: #718096;
+  border-top: 1px solid #dfe7f1;
+  background: #ffffff;
+  text-align: center;
+}
+
+.footer strong {
+  color: #172033;
+}
+
+.footer p {
+  color: #65748a;
+}
+
+.footer small {
+  color: #7c899b;
+}
+
+
+/* 알림창 */
+
+.toast {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+  background: #172033;
+}
+
+.toast.error {
+  color: #ffffff;
+  border-color: #dc3545;
+  background: #c93646;
+}
+
+
+/* 모바일에서 그림자 조절 */
+
+@media (max-width: 640px) {
+
+  .application-card,
+  .recent-card,
+  .process-card {
+    box-shadow: 0 12px 30px rgba(19, 43, 76, 0.1);
+  }
+
+}
