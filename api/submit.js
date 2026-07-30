@@ -31,8 +31,11 @@ export default async function handler(req, res) {
       });
     }
 
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SECRET_KEY;
+    const supabaseUrl =
+      process.env.SUPABASE_URL;
+
+    const supabaseKey =
+      process.env.SUPABASE_SECRET_KEY;
 
     const telegramBotToken =
       process.env.TELEGRAM_BOT_TOKEN ||
@@ -55,7 +58,8 @@ export default async function handler(req, res) {
     }
 
     function maskName(value) {
-      const cleanName = String(value).trim();
+      const cleanName =
+        String(value || '').trim();
 
       if (!cleanName) {
         return '고객**';
@@ -65,42 +69,71 @@ export default async function handler(req, res) {
     }
 
     function escapeHtml(value) {
-      return String(value)
+      return String(value || '')
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
     }
 
-    const maskedName = maskName(name);
+    const maskedName =
+      maskName(name);
+
+    const defaultStatus =
+      '상담 대기';
 
     /* 1. Supabase 저장 */
-    const supabaseResponse = await fetch(
-      `${supabaseUrl}/rest/v1/consultations`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
-          Prefer: 'return=minimal'
-        },
-        body: JSON.stringify({
-          name_masked: maskedName,
-          job: job,
-          amount: amount,
-          status: '상담 대기'
-        })
-      }
-    );
+    const supabaseResponse =
+      await fetch(
+        `${supabaseUrl}/rest/v1/consultations`,
+        {
+          method: 'POST',
+
+          headers: {
+            'Content-Type':
+              'application/json',
+
+            apikey:
+              supabaseKey,
+
+            Authorization:
+              `Bearer ${supabaseKey}`,
+
+            Prefer:
+              'return=minimal'
+          },
+
+          body:
+            JSON.stringify({
+              name_masked:
+                maskedName,
+
+              job:
+                job,
+
+              amount:
+                amount,
+
+              status:
+                defaultStatus
+            })
+        }
+      );
 
     if (!supabaseResponse.ok) {
-      const supabaseError = await supabaseResponse.text();
+      const supabaseError =
+        await supabaseResponse.text();
 
-      console.error('Supabase 저장 실패:', supabaseError);
+      console.error(
+        'Supabase 저장 실패:',
+        supabaseError
+      );
 
       return res.status(502).json({
-        message: '상담 정보 저장에 실패했습니다.',
-        detail: supabaseError
+        message:
+          '상담 정보 저장에 실패했습니다.',
+
+        detail:
+          supabaseError
       });
     }
 
@@ -115,49 +148,80 @@ export default async function handler(req, res) {
       `💰 희망금액: ${escapeHtml(amount)}`,
       `🕒 연락 가능 시간: ${escapeHtml(contactTime)}`,
       `📝 문의내용: ${escapeHtml(message || '없음')}`,
+      `📌 상태: ${escapeHtml(defaultStatus)}`,
       '',
-      `접수시각: ${new Date().toLocaleString('ko-KR', {
-        timeZone: 'Asia/Seoul'
-      })}`
+      `접수시각: ${new Date().toLocaleString(
+        'ko-KR',
+        {
+          timeZone: 'Asia/Seoul'
+        }
+      )}`
     ].join('\n');
 
-    const telegramResponse = await fetch(
-      `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          chat_id: telegramChatId,
-          text: telegramMessage,
-          parse_mode: 'HTML'
-        })
-      }
-    );
+    const telegramResponse =
+      await fetch(
+        `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+        {
+          method: 'POST',
 
-    const telegramResult = await telegramResponse.json();
+          headers: {
+            'Content-Type':
+              'application/json'
+          },
 
-    if (!telegramResponse.ok || !telegramResult.ok) {
-      console.error('텔레그램 전송 실패:', telegramResult);
+          body:
+            JSON.stringify({
+              chat_id:
+                telegramChatId,
+
+              text:
+                telegramMessage,
+
+              parse_mode:
+                'HTML'
+            })
+        }
+      );
+
+    const telegramResult =
+      await telegramResponse.json();
+
+    if (
+      !telegramResponse.ok ||
+      !telegramResult.ok
+    ) {
+      console.error(
+        '텔레그램 전송 실패:',
+        telegramResult
+      );
 
       return res.status(502).json({
-        message: '텔레그램 전송에 실패했습니다.'
+        message:
+          '텔레그램 전송에 실패했습니다.'
       });
     }
 
     return res.status(200).json({
       ok: true,
-      message: '상담 신청이 정상적으로 접수되었습니다.'
+
+      message:
+        '상담 신청이 정상적으로 접수되었습니다.'
     });
+
   } catch (error) {
-    console.error('submit.js 전체 오류:', error);
+    console.error(
+      'submit.js 전체 오류:',
+      error
+    );
 
     return res.status(500).json({
-      message: '접수 처리 중 오류가 발생했습니다.',
-      detail: error instanceof Error
-        ? error.message
-        : String(error)
+      message:
+        '접수 처리 중 오류가 발생했습니다.',
+
+      detail:
+        error instanceof Error
+          ? error.message
+          : String(error)
     });
   }
 }
