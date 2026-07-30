@@ -1785,3 +1785,262 @@ textarea:focus {
   }
 
 }
+/* ==================================================
+   프리미엄 장점 카드
+================================================== */
+
+.premium-benefit-list {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.premium-benefit-card {
+  position: relative;
+  min-height: 315px;
+  padding: 25px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #dce6f2;
+  border-radius: 24px;
+  text-align: center;
+  background: #ffffff;
+  box-shadow:
+    0 16px 38px rgba(29, 61, 105, 0.1);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.premium-benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 24px 48px rgba(29, 61, 105, 0.17);
+}
+
+.premium-benefit-card::before {
+  content: '';
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  top: -95px;
+  right: -80px;
+  border-radius: 50%;
+  opacity: 0.16;
+}
+
+.benefit-number {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.benefit-icon {
+  width: 92px;
+  height: 92px;
+  margin-top: 23px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 42px;
+  background: #ffffff;
+  box-shadow:
+    0 12px 28px rgba(29, 61, 105, 0.13);
+}
+
+.premium-benefit-card strong {
+  display: block;
+  margin-top: 23px;
+  color: #13213a;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.premium-benefit-card > p {
+  margin: 8px 0 0;
+  color: #66758b;
+  font-size: 14px;
+}
+
+.benefit-highlight {
+  width: 100%;
+  margin-top: auto;
+  padding: 13px 10px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+
+/* 01 간편 신청 */
+
+.card-apply {
+  border-color: #f2d28d;
+  background:
+    linear-gradient(
+      180deg,
+      #fffef9 0%,
+      #fff9e9 100%
+    );
+}
+
+.card-apply::before {
+  background: #f4b400;
+}
+
+.card-apply .benefit-number {
+  background:
+    linear-gradient(
+      135deg,
+      #ffb300,
+      #f28a00
+    );
+}
+
+.card-apply .benefit-icon {
+  color: #f5a400;
+  background: #fffaf0;
+}
+
+.card-apply .benefit-highlight {
+  color: #a96500;
+  border: 1px solid #f2d28d;
+  background: #fff3d3;
+}
+
+
+/* 02 무료 상담 */
+
+.card-free {
+  border-color: #b9d3ff;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #eef5ff 100%
+    );
+}
+
+.card-free::before {
+  background: #1769e8;
+}
+
+.card-free .benefit-number {
+  background:
+    linear-gradient(
+      135deg,
+      #1769e8,
+      #4a95ff
+    );
+}
+
+.card-free .benefit-icon {
+  color: #1769e8;
+  background: #eff5ff;
+}
+
+.card-free .benefit-highlight {
+  color: #1258bd;
+  border: 1px solid #b9d3ff;
+  background: #e8f1ff;
+}
+
+
+/* 03 비대면 상담 */
+
+.card-online {
+  border-color: #aee6d8;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ecfbf7 100%
+    );
+}
+
+.card-online::before {
+  background: #13a885;
+}
+
+.card-online .benefit-number {
+  background:
+    linear-gradient(
+      135deg,
+      #13a885,
+      #38c9a8
+    );
+}
+
+.card-online .benefit-icon {
+  color: #13a885;
+  background: #eafaf5;
+}
+
+.card-online .benefit-highlight {
+  color: #087d66;
+  border: 1px solid #aee6d8;
+  background: #ddf7ef;
+}
+
+
+/* 태블릿 */
+
+@media (max-width: 980px) {
+
+  .premium-benefit-list {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-benefit-card {
+    min-height: 280px;
+  }
+
+}
+
+
+/* 모바일 */
+
+@media (max-width: 640px) {
+
+  .premium-benefit-list {
+    gap: 14px;
+  }
+
+  .premium-benefit-card {
+    min-height: 260px;
+    padding: 22px 18px 18px;
+    border-radius: 20px;
+  }
+
+  .benefit-number {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .benefit-icon {
+    width: 78px;
+    height: 78px;
+    font-size: 34px;
+  }
+
+  .premium-benefit-card strong {
+    font-size: 21px;
+  }
+
+}
