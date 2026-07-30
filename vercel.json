@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "api/submit.js": {
-      "maxDuration": 10
-    }
-  }
-}
+{"cleanUrls":true,"trailingSlash":false}
