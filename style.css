@@ -1044,86 +1044,84 @@ textarea {
 /* 사업자 등록정보 */
 
 .business-info-section {
-  padding: 55px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 50px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: #07111a;
   text-align: center;
 }
 
-.business-info-title {
-  margin-bottom: 27px;
-}
-
-.business-info-title span {
-  display: inline-block;
-  padding: 7px 13px;
-  border: 1px solid rgba(53, 219, 195, 0.35);
-  border-radius: 999px;
-  color: #35dbc3;
-  background: rgba(53, 219, 195, 0.08);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.business-info-title h2 {
-  margin: 15px 0 0;
+.business-info-section h2 {
+  margin: 16px 0 26px;
   color: #ffffff;
-  font-size: 28px;
+  font-size: 26px;
+  letter-spacing: -0.03em;
 }
 
 .business-info-list {
-  max-width: 850px;
+  width: min(720px, 100%);
   margin: 0 auto;
-  padding: 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
-.business-info-list p {
-  margin: 8px 0;
-  color: #9aa9ba;
-  font-size: 14px;
-  line-height: 1.9;
-  text-align: center;
+.business-info-list div {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: start;
+  gap: 20px;
+  padding: 7px 0;
+  text-align: left;
+}
+
+.business-info-list span {
+  color: #d8a83d;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .business-info-list strong {
-  margin-right: 10px;
-  color: #d8a83d;
-  font-weight: 800;
+  color: #aeb9c6;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.7;
 }
 
 .business-info-notice {
-  margin: 22px 0 0;
+  margin: 20px 0 0;
   color: #718398;
-  font-size: 12px;
+  font-size: 11px;
 }
-
-
-/* 모바일 */
 
 @media (max-width: 640px) {
 
   .business-info-section {
-    padding: 42px 12px;
+    padding: 40px 12px;
   }
 
-  .business-info-title h2 {
-    font-size: 25px;
+  .business-info-section h2 {
+    font-size: 23px;
   }
 
   .business-info-list {
-    padding: 22px 12px;
+    padding: 20px 12px;
   }
 
-  .business-info-list p {
+  .business-info-list div {
+    display: block;
+    padding: 8px 0;
+    text-align: center;
+  }
+
+  .business-info-list span {
+    display: block;
+    margin-bottom: 2px;
     font-size: 12px;
-    line-height: 1.8;
   }
 
   .business-info-list strong {
     display: block;
-    margin: 0 0 2px;
+    font-size: 12px;
   }
 
 }
