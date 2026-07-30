@@ -1681,3 +1681,107 @@ textarea:focus {
   }
 
 }
+/* 무직자 · 저신용자 강조 안내 */
+
+.hero-target-box {
+  max-width: 610px;
+  margin: 26px 0 28px;
+  padding: 23px 25px;
+  border: 2px solid #2878f0;
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #edf5ff 100%
+    );
+  box-shadow:
+    0 16px 38px rgba(31, 105, 220, 0.16);
+}
+
+.hero-target-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+
+.hero-target-title span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #1769e8;
+  font-size: 16px;
+  font-weight: 900;
+  box-shadow:
+    0 6px 15px rgba(23, 105, 232, 0.22);
+}
+
+.hero-target-title span:nth-child(3) {
+  color: #5c3b00;
+  background: #ffd45c;
+  box-shadow:
+    0 6px 15px rgba(216, 168, 61, 0.25);
+}
+
+.hero-target-title i {
+  color: #607089;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.hero-target-box > strong {
+  display: block;
+  color: #172033;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.hero-target-box p {
+  margin: 9px 0 0;
+  color: #536277;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.hero-target-box small {
+  display: block;
+  margin-top: 9px;
+  color: #7b8796;
+  font-size: 11px;
+}
+
+
+/* 모바일 */
+
+@media (max-width: 640px) {
+
+  .hero-target-box {
+    margin: 22px 0 25px;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .hero-target-title {
+    justify-content: flex-start;
+  }
+
+  .hero-target-title span {
+    padding: 6px 11px;
+    font-size: 14px;
+  }
+
+  .hero-target-box > strong {
+    font-size: 19px;
+  }
+
+  .hero-target-box p {
+    font-size: 13px;
+  }
+
+}
