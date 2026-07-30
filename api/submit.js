@@ -1,415 +1,163 @@
-const form = document.getElementById('consultForm');
-
-const steps = [
-  ...document.querySelectorAll('.form-step')
-];
-
-const progressBar =
-  document.getElementById('progressBar');
-
-const progressText =
-  document.getElementById('progressText');
-
-const toast =
-  document.getElementById('toast');
-
-const submitButton =
-  document.getElementById('submitButton');
-
-const recentList =
-  document.getElementById('recentList');
-
-let currentStep = 0;
-
-
-/* 신청 단계 변경 */
-function updateStep() {
-  steps.forEach(function (step, index) {
-    if (index === currentStep) {
-      step.classList.add('active');
-    } else {
-      step.classList.remove('active');
-    }
-  });
-
-  const progressValues = [33, 66, 100];
-  const progress = progressValues[currentStep];
-
-  progressBar.style.width = progress + '%';
-  progressText.textContent = progress + '%';
-}
-
-
-/* 현재 단계 필수 입력 확인 */
-function validateCurrentStep() {
-  const fields =
-    steps[currentStep].querySelectorAll(
-      'input, select, textarea'
-    );
-
-  for (const field of fields) {
-    if (!field.checkValidity()) {
-      field.reportValidity();
-      return false;
-    }
-  }
-
-  return true;
-}
-
-
-/* 다음 버튼 */
-document
-  .querySelectorAll('.next-button')
-  .forEach(function (button) {
-    button.addEventListener(
-      'click',
-      function () {
-        if (!validateCurrentStep()) {
-          return;
-        }
-
-        if (currentStep < steps.length - 1) {
-          currentStep++;
-        }
-
-        updateStep();
-      }
-    );
-  });
-
-
-/* 이전 버튼 */
-document
-  .querySelectorAll('.previous-button')
-  .forEach(function (button) {
-    button.addEventListener(
-      'click',
-      function () {
-        if (currentStep > 0) {
-          currentStep--;
-        }
-
-        updateStep();
-      }
-    );
-  });
-
-
-/* 휴대폰번호 자동 하이픈 */
-const phoneInput = form.elements.phone;
-
-phoneInput.addEventListener(
-  'input',
-  function (event) {
-    const numbers =
-      event.target.value
-        .replace(/\D/g, '')
-        .slice(0, 11);
-
-    if (numbers.length < 4) {
-      event.target.value = numbers;
-    } else if (numbers.length < 8) {
-      event.target.value =
-        numbers.slice(0, 3)
-        + '-'
-        + numbers.slice(3);
-    } else {
-      event.target.value =
-        numbers.slice(0, 3)
-        + '-'
-        + numbers.slice(3, 7)
-        + '-'
-        + numbers.slice(7);
-    }
-  }
-);
-
-
-/* 화면 알림 */
-function showToast(message, isError) {
-  toast.textContent = message;
-
-  if (isError) {
-    toast.classList.add('error');
-  } else {
-    toast.classList.remove('error');
-  }
-
-  toast.classList.add('show');
-
-  setTimeout(function () {
-    toast.classList.remove('show');
-  }, 3200);
-}
-
-
-/* 화면에 안전하게 출력 */
-function escapeText(value) {
-  return String(value || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-
-/* 접수 시간 표시 */
-function formatRelativeTime(dateValue) {
-  if (!dateValue) {
-    return '';
-  }
-
-  const createdTime =
-    new Date(dateValue).getTime();
-
-  const now = Date.now();
-
-  const difference =
-    Math.max(0, now - createdTime);
-
-  const minutes =
-    Math.floor(difference / 60000);
-
-  if (minutes < 1) {
-    return '방금 전';
-  }
-
-  if (minutes < 60) {
-    return minutes + '분 전';
-  }
-
-  const hours =
-    Math.floor(minutes / 60);
-
-  if (hours < 24) {
-    return hours + '시간 전';
-  }
-
-  const days =
-    Math.floor(hours / 24);
-
-  return days + '일 전';
-}
-
-
-/* 상담 상태 CSS 이름 */
-function getStatusClass(status) {
-  if (status === '상담 완료') {
-    return 'complete';
-  }
-
-  if (status === '상담 중') {
-    return 'progress';
-  }
-
-  return 'waiting';
-}
-
-
-/* 최근 상담 목록 불러오기 */
-async function loadRecentConsultations() {
-  if (!recentList) {
-    return;
-  }
-
+export default async function handler(req, res) {
   try {
-    const response = await fetch(
-      '/api/recent',
+    if (req.method !== 'POST') {
+      return res.status(405).json({
+        message: '허용되지 않은 요청입니다.'
+      });
+    }
+
+    const body = req.body || {};
+
+    const name = String(body.name || '').trim();
+    const phone = String(body.phone || '').trim();
+    const birth = String(body.birth || '').trim();
+    const job = String(body.job || '').trim();
+    const amount = String(body.amount || '').trim();
+    const contactTime = String(body.contactTime || '').trim();
+    const message = String(body.message || '').trim();
+    const privacy = body.privacy;
+
+    if (
+      !name ||
+      !phone ||
+      !birth ||
+      !job ||
+      !amount ||
+      !contactTime ||
+      !privacy
+    ) {
+      return res.status(400).json({
+        message: '필수 항목을 모두 입력해주세요.'
+      });
+    }
+
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SECRET_KEY;
+
+    const telegramBotToken =
+      process.env.TELEGRAM_BOT_TOKEN ||
+      process.env.BOT_TOKEN;
+
+    const telegramChatId =
+      process.env.TELEGRAM_CHAT_ID ||
+      process.env.CHAT_ID;
+
+    if (!supabaseUrl || !supabaseKey) {
+      return res.status(500).json({
+        message: 'Supabase 설정이 없습니다.'
+      });
+    }
+
+    if (!telegramBotToken || !telegramChatId) {
+      return res.status(500).json({
+        message: '텔레그램 설정이 없습니다.'
+      });
+    }
+
+    function maskName(value) {
+      const cleanName = String(value).trim();
+
+      if (!cleanName) {
+        return '고객**';
+      }
+
+      return cleanName.charAt(0) + '**';
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    const maskedName = maskName(name);
+
+    /* 1. Supabase 저장 */
+    const supabaseResponse = await fetch(
+      `${supabaseUrl}/rest/v1/consultations`,
       {
-        method: 'GET',
-        cache: 'no-store'
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+          Prefer: 'return=minimal'
+        },
+        body: JSON.stringify({
+          name_masked: maskedName,
+          job: job,
+          amount: amount,
+          status: '상담 대기'
+        })
       }
     );
 
-    const result = await response.json();
+    if (!supabaseResponse.ok) {
+      const supabaseError = await supabaseResponse.text();
 
-    if (!response.ok) {
-      throw new Error(
-        result.message
-        || '최근 상담 목록을 불러오지 못했습니다.'
-      );
+      console.error('Supabase 저장 실패:', supabaseError);
+
+      return res.status(502).json({
+        message: '상담 정보 저장에 실패했습니다.',
+        detail: supabaseError
+      });
     }
 
-    const items =
-      Array.isArray(result)
-        ? result
-        : result.items || [];
+    /* 2. 텔레그램 전송 */
+    const telegramMessage = [
+      '📩 <b>A-ONE CREDIT 상담 접수</b>',
+      '',
+      `👤 이름: ${escapeHtml(name)}`,
+      `📱 연락처: ${escapeHtml(phone)}`,
+      `🎂 생년월일: ${escapeHtml(birth)}`,
+      `💼 직업: ${escapeHtml(job)}`,
+      `💰 희망금액: ${escapeHtml(amount)}`,
+      `🕒 연락 가능 시간: ${escapeHtml(contactTime)}`,
+      `📝 문의내용: ${escapeHtml(message || '없음')}`,
+      '',
+      `접수시각: ${new Date().toLocaleString('ko-KR', {
+        timeZone: 'Asia/Seoul'
+      })}`
+    ].join('\n');
 
-    if (items.length === 0) {
-      recentList.innerHTML = `
-        <div class="recent-empty">
-          아직 접수된 상담이 없습니다.
-        </div>
-      `;
-
-      return;
-    }
-
-    recentList.innerHTML =
-      items.map(function (item) {
-        const maskedName =
-          escapeText(item.name_masked || '고객**');
-
-        const firstLetter =
-          escapeText(
-            String(item.name_masked || '고객')
-              .charAt(0)
-          );
-
-        const job =
-          escapeText(item.job || '기타');
-
-        const amount =
-          escapeText(item.amount || '상담 문의');
-
-        const status =
-          escapeText(item.status || '상담 대기');
-
-        const statusClass =
-          getStatusClass(item.status);
-
-        const relativeTime =
-          formatRelativeTime(item.created_at);
-
-        return `
-          <article class="recent-item">
-
-            <div class="customer-info">
-
-              <span class="customer-icon">
-                ${firstLetter}
-              </span>
-
-              <div>
-                <strong>
-                  ${maskedName} 고객님
-                </strong>
-
-                <small>
-                  ${job} · ${amount}
-                  ${relativeTime
-                    ? ' · ' + relativeTime
-                    : ''}
-                </small>
-              </div>
-
-            </div>
-
-            <span
-              class="consult-status ${statusClass}"
-            >
-              ${status}
-            </span>
-
-          </article>
-        `;
-      }).join('');
-
-  } catch (error) {
-    console.error(
-      '최근 상담 불러오기 오류:',
-      error
+    const telegramResponse = await fetch(
+      `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: telegramChatId,
+          text: telegramMessage,
+          parse_mode: 'HTML'
+        })
+      }
     );
 
-    recentList.innerHTML = `
-      <div class="recent-empty">
-        최근 상담 현황을 불러오는 중입니다.
-      </div>
-    `;
+    const telegramResult = await telegramResponse.json();
+
+    if (!telegramResponse.ok || !telegramResult.ok) {
+      console.error('텔레그램 전송 실패:', telegramResult);
+
+      return res.status(502).json({
+        message: '텔레그램 전송에 실패했습니다.'
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      message: '상담 신청이 정상적으로 접수되었습니다.'
+    });
+  } catch (error) {
+    console.error('submit.js 전체 오류:', error);
+
+    return res.status(500).json({
+      message: '접수 처리 중 오류가 발생했습니다.',
+      detail: error instanceof Error
+        ? error.message
+        : String(error)
+    });
   }
 }
-
-
-/* 상담 신청 */
-form.addEventListener(
-  'submit',
-  async function (event) {
-    event.preventDefault();
-
-    if (!validateCurrentStep()) {
-      return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.textContent = '접수 중...';
-
-    const formData =
-      new FormData(form);
-
-    const data =
-      Object.fromEntries(
-        formData.entries()
-      );
-
-    try {
-      const response =
-        await fetch(
-          '/api/submit',
-          {
-            method: 'POST',
-
-            headers: {
-              'Content-Type':
-                'application/json'
-            },
-
-            body:
-              JSON.stringify(data)
-          }
-        );
-
-      const result =
-        await response
-          .json()
-          .catch(function () {
-            return {};
-          });
-
-      if (!response.ok) {
-        throw new Error(
-          result.message
-          || '접수 처리 중 오류가 발생했습니다.'
-        );
-      }
-
-      showToast(
-        '상담 신청이 정상적으로 접수되었습니다.',
-        false
-      );
-
-      form.reset();
-
-      currentStep = 0;
-
-      updateStep();
-
-      await loadRecentConsultations();
-
-    } catch (error) {
-      showToast(
-        error.message
-        || '잠시 후 다시 시도해주세요.',
-        true
-      );
-
-    } finally {
-      submitButton.disabled = false;
-      submitButton.textContent =
-        '상담 신청 완료';
-    }
-  }
-);
-
-
-/* 사이트를 열면 최근 상담 불러오기 */
-updateStep();
-loadRecentConsultations();
-
-
-/* 30초마다 최근 상담 목록 새로 확인 */
-setInterval(
-  loadRecentConsultations,
-  30000
-);
