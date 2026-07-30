@@ -146,6 +146,8 @@ export default async function handler(req, res) {
       `🎂 생년월일: ${escapeHtml(birth)}`,
       `💼 직업: ${escapeHtml(job)}`,
       `💰 희망금액: ${escapeHtml(amount)}`,
+      `🏦 금융권 연체: ${escapeHtml(financeLate)}`,
+      `📱 통신 연체: ${escapeHtml(phoneLate)}`,
       `🕒 연락 가능 시간: ${escapeHtml(contactTime)}`,
       `📝 문의내용: ${escapeHtml(message || '없음')}`,
       `📌 상태: ${escapeHtml(defaultStatus)}`,
